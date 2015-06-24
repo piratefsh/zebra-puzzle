@@ -31,12 +31,11 @@ def is_right_of(house1, house2):
 	""" Return true if house1 is right of house2, else false"""
 	return house2 - house1 == 1
 
-# conditions
-
+# possible house orderings
 possibilities = list(itertools.permutations(houses, len(houses)))
 
 def solve():
-	results = [(zebra, water)
+	results_gen = ((zebra, water)
 		for (red, green, ivory, yellow, blue) in possibilities
 		if is_right_of(green, ivory) #6
 		
@@ -60,7 +59,8 @@ def solve():
 		if Old_Gold == snails #7
 		if is_next_to(Chesterfields, fox) #11
 		if is_next_to(Kools, horse) #12
-	]
-	return results
+	)
+
+	return next(results_gen)
 
 print solve()
