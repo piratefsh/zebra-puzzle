@@ -30,7 +30,7 @@ def is_next_to(house1, house2):
 
 def is_right_of(house1, house2):
 	""" Return true if house1 is right of house2, else false"""
-	return house2 - house1 == 1
+	return house1 - house2 == 1
 
 # possible house orderings
 possibilities = list(itertools.permutations(houses, len(houses)))
@@ -42,13 +42,13 @@ def solve():
 		
 		for (Englishman, Spaniard, Ukranian, Norwegian, Japanese) in possibilities
 		if Englishman == red #2
-		if Norwegian == houses[0] #10
+		if Norwegian == 1 #10
 		if is_next_to(Norwegian, blue)
 
 		for (coffee, tea, milk, orange_juice, water) in possibilities
 		if coffee == green #4
 		if Ukranian == tea #5
-		if milk == houses[len(houses)/2] #9
+		if milk == 3 #9
 		
 		for (Old_Gold, Kools, Lucky_Strike, Parliaments, Chesterfields) in possibilities
 		if Kools == yellow #8
