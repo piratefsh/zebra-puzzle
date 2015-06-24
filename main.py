@@ -37,25 +37,25 @@ house_orderings = list(itertools.permutations(houses,5))
 # dog, snails, fox, horse, zebra
 # OldGold, Kools, Chesterfields, LuckyStrike, Parliaments 
 g = ((zebra, water)
-	for (Englishman, Spaniard, Ukrainian, Norwegian, Japanese) in house_orderings
 	for (red, green, ivory, yellow, blue) in house_orderings
-	for (Coffee, tea, Milk, oj, water) in house_orderings
-	for (dog, snails, fox, horse, zebra) in house_orderings
-	for (OldGold, Kools, Chesterfields, LuckyStrike, Parliaments) in house_orderings
+	if immediate_right(green, ivory) #6
+	for (Englishman, Spaniard, Ukrainian, Norwegian, Japanese) in house_orderings
 	if Englishman == red 	#2
-	if Spaniard == dog 		#3
+	if Norwegian == blue	#15
+	if Norwegian == first	#10
+	for (Coffee, tea, Milk, oj, water) in house_orderings
 	if Coffee == green		#4
 	if Ukrainian == tea		#5
-	if immediate_right(green, ivory) #6
+	if Milk == middle		#9
+	for (dog, snails, fox, horse, zebra) in house_orderings
+	if Spaniard == dog 		#3
+	for (OldGold, Kools, Chesterfields, LuckyStrike, Parliaments) in house_orderings
 	if OldGold == snails	#7
 	if Kools == yellow		#8
-	if Milk == middle		#9
-	if Norwegian == first	#10
 	if next_to(Chesterfields,fox) #11
 	if next_to(Kools,horse)	#12
 	if LuckyStrike == oj	#13
 	if Japanese == Parliaments #14
-	if Norwegian == blue	#15
 	)
 
 start = time.time()
