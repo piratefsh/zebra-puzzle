@@ -39,10 +39,10 @@ house_orderings = list(itertools.permutations(houses,5))
 g = ((zebra, water)
 	for (Englishman, Spaniard, Ukrainian, Norwegian, Japanese) in house_orderings
 	for (red, green, ivory, yellow, blue) in house_orderings
+	if Englishman == red 	#2
 	for (Coffee, tea, Milk, oj, water) in house_orderings
 	for (dog, snails, fox, horse, zebra) in house_orderings
 	for (OldGold, Kools, Chesterfields, LuckyStrike, Parliaments) in house_orderings
-	if Englishman == red 	#2
 	if Spaniard == dog 		#3
 	if Coffee == green		#4
 	if Ukrainian == tea		#5

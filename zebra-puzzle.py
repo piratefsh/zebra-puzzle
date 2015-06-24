@@ -35,8 +35,21 @@ def is_right_of(house1, house2):
 # possible house orderings
 possibilities = list(itertools.permutations(houses, len(houses)))
 
+res = [set(), set(), set(), set(), set()]
+colors = ['red', 'green', 'ivory', 'yellow', 'blue']
+nationality = ['Englishman', 'Spaniard', 'Ukranian', 'Norwegian', 'Japanese']
+drink = ['coffee', 'tea', 'milk', 'orange_juice', 'water']
+cigs = ['Old_Gold', 'Kools', 'Lucky_Strike', 'Parliaments', 'Chesterfields']
+pet = ['dog', 'snails', 'horse', 'fox', 'zebra']
+
+def add_prop(props, vals):
+	for i in range(len(props)):
+		res[vals[i]-1].add(props[i])
+		
 def solve():
-	results_gen = ((zebra, water)
+	results_gen = [ 
+		add_prop([c, n, d, g, p], [eval(c), eval(n), eval(d), eval(g), eval(p)])
+
 		for (red, green, ivory, yellow, blue) in possibilities
 		if is_right_of(green, ivory) #6
 		
@@ -60,7 +73,15 @@ def solve():
 		if Old_Gold == snails #7
 		if is_next_to(Chesterfields, fox) #11
 		if is_next_to(Kools, horse) #12
-	)
-	return next(results_gen)
 
-print solve()
+		for c in colors 
+		for n in nationality 
+		for d in drink 
+		for g in cigs 
+		for p in pet 
+	]
+	return results_gen
+
+solved = solve()
+for r in res:
+	print r
