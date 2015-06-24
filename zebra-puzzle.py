@@ -25,6 +25,7 @@ import itertools
 houses = range(1,6)
 
 def is_next_to(house1, house2):
+	""" Return true if house1 is next to house2, else false"""
 	return abs(house1 - house2) == 1
 
 def is_right_of(house1, house2):
@@ -60,7 +61,6 @@ def solve():
 		if is_next_to(Chesterfields, fox) #11
 		if is_next_to(Kools, horse) #12
 	)
-
 	return next(results_gen)
 
 print solve()
