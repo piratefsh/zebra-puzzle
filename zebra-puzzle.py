@@ -57,7 +57,9 @@ def solve():
         for (red, green, ivory, yellow, blue) in possibilities
         if is_right_of(green, ivory)  # 6
 
-        for (Englishman, Spaniard, Ukranian, Norwegian, Japanese) in possibilities
+        for (Englishman, Spaniard, Ukranian, Norwegian, Japanese)
+        in possibilities
+
         if Englishman == red  # 2
         if Norwegian == 1  # 10
         if is_next_to(Norwegian, blue)
@@ -67,7 +69,9 @@ def solve():
         if Ukranian == tea  # 5
         if milk == 3  # 9
 
-        for (Old_Gold, Kools, Lucky_Strike, Parliaments, Chesterfields) in possibilities
+        for (Old_Gold, Kools, Lucky_Strike, Parliaments, Chesterfields)
+        in possibilities
+
         if Kools == yellow  # 8
         if Lucky_Strike == orange_juice  # 13
         if Japanese == Parliaments  # 14
