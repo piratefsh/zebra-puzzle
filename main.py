@@ -31,27 +31,32 @@ def next_to(h1, h2):
 
 houses = [first, _, middle, _, _] = [1, 2, 3, 4, 5]  # 1
 
-house_orderings = list(itertools.permutations(houses, 5))
+orderings = list(itertools.permutations(houses, 5))
 
 # Englishman, Spaniard, Ukrainian, Norwegian, Japanese
 # red, green, ivory, yellow, blue
 # Coffee, tea, Milk, oj, water
 # dog, snails, fox, horse, zebra
 # OldGold, Kools, Chesterfields, LuckyStrike, Parliaments
-g = ((zebra, water)
-     for (red, green, ivory, yellow, blue) in house_orderings
+g = ((red, green, ivory, yellow, blue,
+      Englishman, Spaniard, Ukrainian, Norwegian, Japanese,
+      Coffee, tea, Milk, oj, water,
+      dog, snails, fox, horse, zebra,
+      OldGold, Kools, Chesterfields, LuckyStrike, Parliaments
+      )
+     for (red, green, ivory, yellow, blue) in orderings
      if immediate_right(green, ivory)  # 6
-     for (Englishman, Spaniard, Ukrainian, Norwegian, Japanese) in house_orderings
+     for (Englishman, Spaniard, Ukrainian, Norwegian, Japanese) in orderings
      if Englishman == red  # 2
      if next_to(Norwegian, blue)  # 15
      if Norwegian == first  # 10
-     for (Coffee, tea, Milk, oj, water) in house_orderings
+     for (Coffee, tea, Milk, oj, water) in orderings
      if Coffee == green  # 4
      if Ukrainian == tea  # 5
      if Milk == middle  # 9
-     for (dog, snails, fox, horse, zebra) in house_orderings
+     for (dog, snails, fox, horse, zebra) in orderings
      if Spaniard == dog  # 3
-     for (OldGold, Kools, Chesterfields, LuckyStrike, Parliaments) in house_orderings
+     for (OldGold, Kools, Chesterfields, LuckyStrike, Parliaments) in orderings
      if OldGold == snails  # 7
      if Kools == yellow  # 8
      if next_to(Chesterfields, fox)  # 11
@@ -60,7 +65,28 @@ g = ((zebra, water)
      if Japanese == Parliaments  # 14
      )
 
-start = time.time()
-print next(g)
-end = time.time()
-print 'Time:', end - start
+# start = time.time()
+# print next(g)
+# end = time.time()
+# print 'Time:', end - start
+
+(red, green, ivory, yellow, blue,
+ Englishman, Spaniard, Ukrainian, Norwegian, Japanese,
+ Coffee, tea, Milk, oj, water,
+ dog, snails, fox, horse, zebra,
+ OldGold, Kools, Chesterfields, LuckyStrike, Parliaments
+ ) = next(g)
+
+colors = dict(zip(['red', 'green', 'ivory', 'yellow', 'blue'],
+                  [red, green, ivory, yellow, blue]))
+nationalities = dict(zip(['Englishman', 'Spaniard', 'Ukrainian', 'Norwegian', 'Japanese'],
+                         [Englishman, Spaniard, Ukrainian, Norwegian, Japanese, ]))
+drinks = dict(zip(['Coffee', 'tea', 'Milk', 'oj', 'water'],
+                  [Coffee, tea, Milk, oj, water]))
+animals = dict(zip(['dog', 'snails', 'fox', 'horse', 'zebra'],
+                   [dog, snails, fox, horse, zebra]))
+smokes = dict(zip(['OldGold', 'Kools', 'Chesterfields', 'LuckyStrike', 'Parliaments'],
+                  [OldGold, Kools, Chesterfields, LuckyStrike, Parliaments]))
+
+for property_group in [colors, nationalities, drinks, animals, smokes]:
+    print sorted(property_group.items(), key=lambda (p, h): h)
