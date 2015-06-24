@@ -35,7 +35,6 @@ def is_right_of(house1, house2):
 # possible house orderings
 possibilities = list(itertools.permutations(houses, len(houses)))
 
-res = [set(), set(), set(), set(), set()]
 colors = ['red', 'green', 'ivory', 'yellow', 'blue']
 nationality = ['Englishman', 'Spaniard', 'Ukranian', 'Norwegian', 'Japanese']
 drink = ['coffee', 'tea', 'milk', 'orange_juice', 'water']
@@ -43,13 +42,11 @@ cigs = ['Old_Gold', 'Kools', 'Lucky_Strike', 'Parliaments', 'Chesterfields']
 pet = ['dog', 'snails', 'horse', 'fox', 'zebra']
 
 properties = colors + nationality + drink + cigs + pet
-def add_prop(props, vals):
-	for i in range(len(props)):
-		res[vals[i]-1].add(props[i])
 
 def solve():
+	solved_houses = [set(), set(), set(), set(), set()]
 	results_gen = [ 
-		add_prop([p], [eval(p)])
+		solved_houses[eval(p)-1].add(p)
 
 		for (red, green, ivory, yellow, blue) in possibilities
 		if is_right_of(green, ivory) #6
@@ -77,8 +74,8 @@ def solve():
 
 		for p in properties 
 	]
-	return results_gen
+	return solved_houses
 
 solved = solve()
-for r in res:
-	print r
+for house in solved:
+	print house
