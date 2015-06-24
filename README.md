@@ -24,13 +24,10 @@ Given the following conditions:
 
 Now, who drinks water? Who owns the zebra?
 
-"""
-
 ## Run
 
 ```
 	python zebra-puzzle.py
-
 ```
 
-Outputs the location of (zebra, water) houses.
+Outputs the properties of each house. 
