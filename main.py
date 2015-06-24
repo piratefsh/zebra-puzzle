@@ -21,42 +21,44 @@ import time
 Now, who drinks water? Who owns the zebra?
 """
 
-def immediate_right(h1,h2):
-	return h1-h2 == 1
 
-def next_to(h1,h2):
-	return abs(h1-h2) == 1
+def immediate_right(h1, h2):
+    return h1-h2 == 1
 
-houses = [first, _, middle, _, _] = [1, 2, 3, 4, 5] #1
 
-house_orderings = list(itertools.permutations(houses,5))
+def next_to(h1, h2):
+    return abs(h1-h2) == 1
+
+houses = [first, _, middle, _, _] = [1, 2, 3, 4, 5]  # 1
+
+house_orderings = list(itertools.permutations(houses, 5))
 
 # Englishman, Spaniard, Ukrainian, Norwegian, Japanese
 # red, green, ivory, yellow, blue
 # Coffee, tea, Milk, oj, water
 # dog, snails, fox, horse, zebra
-# OldGold, Kools, Chesterfields, LuckyStrike, Parliaments 
+# OldGold, Kools, Chesterfields, LuckyStrike, Parliaments
 g = ((zebra, water)
-	for (red, green, ivory, yellow, blue) in house_orderings
-	if immediate_right(green, ivory) #6
-	for (Englishman, Spaniard, Ukrainian, Norwegian, Japanese) in house_orderings
-	if Englishman == red 	#2
-	if Norwegian == blue	#15
-	if Norwegian == first	#10
-	for (Coffee, tea, Milk, oj, water) in house_orderings
-	if Coffee == green		#4
-	if Ukrainian == tea		#5
-	if Milk == middle		#9
-	for (dog, snails, fox, horse, zebra) in house_orderings
-	if Spaniard == dog 		#3
-	for (OldGold, Kools, Chesterfields, LuckyStrike, Parliaments) in house_orderings
-	if OldGold == snails	#7
-	if Kools == yellow		#8
-	if next_to(Chesterfields,fox) #11
-	if next_to(Kools,horse)	#12
-	if LuckyStrike == oj	#13
-	if Japanese == Parliaments #14
-	)
+     for (red, green, ivory, yellow, blue) in house_orderings
+     if immediate_right(green, ivory)  # 6
+     for (Englishman, Spaniard, Ukrainian, Norwegian, Japanese) in house_orderings
+     if Englishman == red  # 2
+     if Norwegian == blue  # 15
+     if Norwegian == first  # 10
+     for (Coffee, tea, Milk, oj, water) in house_orderings
+     if Coffee == green  # 4
+     if Ukrainian == tea  # 5
+     if Milk == middle  # 9
+     for (dog, snails, fox, horse, zebra) in house_orderings
+     if Spaniard == dog  # 3
+     for (OldGold, Kools, Chesterfields, LuckyStrike, Parliaments) in house_orderings
+     if OldGold == snails  # 7
+     if Kools == yellow  # 8
+     if next_to(Chesterfields, fox)  # 11
+     if next_to(Kools, horse)  # 12
+     if LuckyStrike == oj  # 13
+     if Japanese == Parliaments  # 14
+     )
 
 start = time.time()
 print next(g)
