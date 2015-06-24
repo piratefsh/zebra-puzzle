@@ -20,3 +20,27 @@ Zebra puzzle solver:
 Now, who drinks water? Who owns the zebra?
 """
 
+houses = range(5)
+
+def is_next_to(house1, house2):
+	return abs(house1 - house2) == 1
+
+def is_right_of(house1, house2):
+	return house2 - house1 == 1
+
+# conditions
+
+if Englishman == red #2
+if Spaniard == dog #3
+if codde == green #4
+if Ukranian == tea #5
+if is_right_of(green, ivory) #6
+if Old_Gold == snails #7
+if Kools == yellow #8
+if milk == 2 #9
+if Norwegian == 0 #10
+if is_next_to(Chesterfields, fox) #11
+if is_next_to(Kools, horse) #12
+if Lucky_Strike == orange_juice #13
+if Japanese == Parliaments #14
+if is_next_to(Norwegian, blue)
