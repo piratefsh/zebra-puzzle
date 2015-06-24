@@ -43,7 +43,7 @@ g = ((zebra, water)
      if immediate_right(green, ivory)  # 6
      for (Englishman, Spaniard, Ukrainian, Norwegian, Japanese) in house_orderings
      if Englishman == red  # 2
-     if Norwegian == blue  # 15
+     if next_to(Norwegian, blue)  # 15
      if Norwegian == first  # 10
      for (Coffee, tea, Milk, oj, water) in house_orderings
      if Coffee == green  # 4
